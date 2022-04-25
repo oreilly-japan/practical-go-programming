@@ -1,0 +1,20 @@
+FROM golang:1.17-bullseye as builder
+WORKDIR /opt/app
+COPY go.mod go.sum ./
+RUN go mod download
+COPY cmd/sample/*.go ./cmd/sample/
+RUN cd cmd/sample && go build -trimpath -ldflags="-w -s" -o "sample-app"
+
+FROM node:16-bullseye as frontend
+WORKDIR /opt/app
+COPY frontend/package.json frontend/package-lock.json ./
+RUN npm ci
+COPY frontend/.browserslistrc frontend/babel.config.js frontend/tsconfig.json ./
+COPY frontend/public ./public
+COPY frontend/src ./src
+RUN npm run build
+
+FROM gcr.io/distroless/base:debug
+COPY --from=builder /opt/app/cmd/sample/sample-app /sample-app
+COPY --from=frontend /opt/app/dist /dist
+CMD ["/sample-app"]

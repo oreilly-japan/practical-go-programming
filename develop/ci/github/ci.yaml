@@ -1,0 +1,27 @@
+name: ci
+on:
+  push:
+    branches:
+      - "**"
+  pull_request: {}
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: setup go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.x
+
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v2
+        with:
+          version: v1.44.2
+          args: --disable-all --enable=govet,errcheck,staticcheck,gosimple
+
+      - name: test
+        run: go test -v ./...

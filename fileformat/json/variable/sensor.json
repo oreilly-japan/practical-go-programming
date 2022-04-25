@@ -1,0 +1,10 @@
+{
+  "type": "sensor",
+  "timestamp": 1639269962,
+  "payload": {
+    "id": "12979339-1654-4859-ba36-9fd43ccb21f5",
+    "device_id": "123456789",
+    "result": "ok",
+    "product_id": "1001"
+  }
+}

@@ -1,0 +1,5 @@
+パッケージ名,子パッケージ,説明
+net,mail,Package mail implements parsing of mail messages.
+net,http,"Package net provides a portable interface for network I/O,
+ including TCP/IP, UDP, domain name resolution, and Unix domain sockets."
+net,url,"Package url parses URLs and implements query escaping."

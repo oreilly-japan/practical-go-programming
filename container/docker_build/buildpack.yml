@@ -1,0 +1,3 @@
+go:
+  targets:
+  - ./cmd/sample

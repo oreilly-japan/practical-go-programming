@@ -1,0 +1,11 @@
+{
+  "type": "message",
+  "timestamp": 1639269962,
+  "payload": {
+    "id": "6fc06435-755d-42a5-9652-11ad29ee2886",
+    "user_id": "ABC12345",
+    "message": "もうすぐ到着します",
+    "latitude": 35.622315,
+    "longitude": 139.727165
+  }
+}

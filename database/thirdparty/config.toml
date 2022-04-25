@@ -1,0 +1,7 @@
+[psql]
+  dbname  = "testdb"
+  host    = "localhost"
+  port    = 5432
+  user    = "testuser"
+  pass    = "pass"
+  sslmode = "disable"
