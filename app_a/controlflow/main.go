@@ -40,7 +40,7 @@ func main() {
 	// control-flow-for1
 
 	// control-flow-for2
-	// 1変数だけ書けばインデックス飲みを受け取れる
+	// 1変数だけ書けばインデックスのみを受け取れる
 	for i := range scketches {
 		fmt.Println(i)
 	}
