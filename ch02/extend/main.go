@@ -82,6 +82,18 @@ func useUrlValues() {
 	// use-url-values
 }
 
+func getUrlMultiValues() {
+	vs := url.Values{}
+	// get-url-multi-values
+	vs.Add("key1", "value1")
+	vs.Add("key1", "value2")                 // 同じキー
+	fmt.Printf("key1: %v\n", vs.Get("key1")) // Getメソッドだと最初の要素のみ
+	for i, v := range vs["key1"] {           // インデックスアクセスすると全値取得可能
+		fmt.Printf("key1[%d]: %v\n", i, v)
+	}
+	// get-url-multi-values
+}
+
 func uselist() {
 	// use-list
 	// container/listを使う
@@ -98,11 +110,12 @@ func uselist() {
 }
 
 func main() {
-	var s HttpStatus
+	var s HTTPStatus
 
 	fmt.Println(s)
-	fmt.Printf("%s\n", StatusTeapot.String())
+	//fmt.Printf("%s\n", StatusTeapot.String())
 	urlValues()
 	useUrlValues()
 	uselist()
+	getUrlMultiValues()
 }
