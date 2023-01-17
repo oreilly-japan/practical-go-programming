@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:14
+    container_name: go-cookbook-work
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=testuser
+      - POSTGRES_PASSWORD=pass
+      - POSTGRES_DB=testdb
+    volumes:
+      - ./volumes_dir:/docker-entrypoint-initdb.d

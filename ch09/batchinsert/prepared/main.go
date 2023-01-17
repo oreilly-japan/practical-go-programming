@@ -14,7 +14,7 @@ type User struct {
 }
 
 func main() {
-	db, err := sql.Open("postgres", "host=localhost port=5432 user=testuser dbname=testdb password=pass sslmode=disable")
+	db, err := sql.Open("pgx", "host=localhost port=5432 user=testuser dbname=testdb password=pass sslmode=disable")
 	if nil != err {
 		log.Fatal(err)
 	}
@@ -32,8 +32,8 @@ func main() {
 		{"0002", "Ferris"},
 		{"0003", "Duke"},
 	}
-	// プリペアードステートメントの構築
-	stmt, err := tx.PrepareContext(ctx, "INSERT INTO users(user_id, user_name, created_at) VALUES( $1, $2, $3 );")
+	// プリペアードステートメントの構築（変数 tx の生成は省略）
+	stmt, err := tx.PrepareContext(ctx, "INSERT INTO users(user_id, user_name, created_at) VALUES( $1, $2, current_timestamp );")
 	if err != nil {
 		// エラーハンドリング
 	}
