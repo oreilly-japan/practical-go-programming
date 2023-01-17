@@ -3,7 +3,7 @@ package dtest
 import (
 	"context"
 	"database/sql"
-	"io/ioutil"
+	"os"
 	"reflect"
 	"testing"
 
@@ -20,7 +20,7 @@ func TestFetchUser(t *testing.T) {
 	}
 	defer db.Close()
 
-	sqlBytes, err := ioutil.ReadFile("./schema.sql")
+	sqlBytes, err := os.ReadFile("./schema.sql")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -52,7 +52,7 @@ func TestFetchUser(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			sqlBytes, err := ioutil.ReadFile(tt.inputTestSQL)
+			sqlBytes, err := os.ReadFile(tt.inputTestSQL)
 			if err != nil {
 				t.Fatal(err)
 			}

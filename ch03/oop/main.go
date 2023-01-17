@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
 	"net/http/httputil"
@@ -63,7 +62,7 @@ func reverseProxy() {
 		var buf bytes.Buffer
 		enc := json.NewEncoder(&buf)
 		enc.Encode(&body)
-		res.Body = ioutil.NopCloser(&buf)
+		res.Body = io.NopCloser(&buf)
 		res.Header.Set("Content-Length", strconv.Itoa(buf.Len()))
 		return nil
 	}
@@ -93,7 +92,7 @@ func reverseProxyTest() {
 		var buf bytes.Buffer
 		enc := json.NewEncoder(&buf)
 		enc.Encode(&body)
-		res.Body = ioutil.NopCloser(&buf)
+		res.Body = io.NopCloser(&buf)
 		res.Header.Set("Content-Length", strconv.Itoa(buf.Len()))
 		return nil
 	}
